@@ -1,7 +1,9 @@
 import * as http from "http";
 import { Server } from "socket.io";
+import random from "random-name";
 
 const httpServer = http.createServer();
+const users = new Map();
 
 const io = new Server(httpServer, {
   cors: { origin: "*" },
@@ -9,12 +11,19 @@ const io = new Server(httpServer, {
 
 io.on("connection", (socket) => {
   console.log("Connected with id", socket.id);
+  const userData = {
+    username: random.first() + " " + random.last(),
+  };
+  users.set(socket.id, userData);
+  socket.emit("username", userData.username);
 
   socket.on("message", (text) => {
     console.log("message from " + socket.id + ": " + text);
+    const user = users.get(socket.id);
     const message = {
       id: crypto.randomUUID(),
       text,
+      username: user?.username || "Anonymous",
       senderId: socket.id,
       timestamp: Date.now(),
     };
