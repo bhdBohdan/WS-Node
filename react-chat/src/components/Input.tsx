@@ -6,6 +6,9 @@ const CustomInput: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleSend = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!inputValue) {
+      return;
+    }
     e.preventDefault();
     socket.emit("message", inputValue); // ✅ sending to server
     setInputValue("");
@@ -17,7 +20,6 @@ const CustomInput: React.FC = () => {
 
   return (
     <div className="inputMessage">
-      {inputValue}
       <input
         type="text"
         placeholder="Send..."

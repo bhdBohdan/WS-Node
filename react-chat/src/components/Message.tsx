@@ -1,12 +1,15 @@
+import type { MessageDTO } from "../models/models";
 import "./Message.css";
 
-const Message: React.FC<{ isMy?: boolean; children: React.ReactNode }> = (
-  props
-) => {
+const Message: React.FC<{ message: MessageDTO; isMy: boolean }> = ({
+  message,
+  isMy,
+}) => {
   return (
-    <div className={`messageouter ${props.isMy ? "my" : ""}`}>
+    <div className={`messageouter ${isMy ? "my" : ""}`}>
       <div className="message">
-        <p>{props.children}</p>
+        <label className="message-username">{message.username}</label>
+        <p className="message-text">{message.text}</p>
       </div>
     </div>
   );

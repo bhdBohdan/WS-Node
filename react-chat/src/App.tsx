@@ -27,9 +27,7 @@ function App() {
     <>
       <div className="container" ref={containerRef}>
         {messages.map((m, i) => (
-          <Message key={i} isMy={m.senderId === myId}>
-            {m.text}
-          </Message>
+          <Message key={i} message={m} isMy={myId === m.senderId} />
         ))}
       </div>
 

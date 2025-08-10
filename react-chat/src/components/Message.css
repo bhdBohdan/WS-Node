@@ -6,22 +6,53 @@
   margin: 0;
   padding: 0;
 }
+
+/**/
+
 .message {
-  background-color: #213547;
-  border-radius: 10px;
-  padding: 10px;
-  width: 40vw;
-  height: 8vh;
-  font-family: "Courier New", Courier, monospace;
-  font-size: x-large;
+  background-color: #2d3f5b;
+  border-radius: 12px;
+  padding: 16px;
+  display: inline-block; /*to make cont decrease to fit cntnt*/
+  max-width: 60%; /*max w rel to parent*/
+  min-width: min-content;
+  margin: 8px 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #f8fafc;
+  position: relative;
 }
 
+.message-username {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: #94a3b8;
+
+  white-space: nowrap; /*prevent usname from wrapping*/
+  width: fit-content;
+}
+
+.message-text {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/**/
 .my {
   justify-content: end;
 }
 
 .my .message {
-  background-color: #345979;
+  background-color: #4c8dc7;
 
   justify-content: end;
+}
+
+.my .message label {
+  color: #e0f2fe;
 }
