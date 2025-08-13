@@ -1,9 +1,16 @@
 import { useState } from "react";
 import "./Input.css";
-import { socket } from "../socket";
+import { useSocket } from "../context/socketContext";
 
 const CustomInput: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
+  // const navigate = useNavigate();
+
+  const { socket } = useSocket();
+
+  if (!socket) {
+    throw new Error("Failure to connect to Socket");
+  }
 
   const handleSend = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!inputValue) {
@@ -23,7 +30,7 @@ const CustomInput: React.FC = () => {
       <input
         type="text"
         placeholder="Send..."
-        name="message"
+        name="messag"
         onChange={handleChange}
         value={inputValue}
       />

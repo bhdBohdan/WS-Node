@@ -1,13 +1,14 @@
 import { useEffect } from "react";
-import { socket } from "../socket";
 import type { MessageDTO } from "../models/models";
+import { useSocket } from "../context/socketContext";
 
 export default function useMessages(onMessage: (msg: MessageDTO) => void) {
+  const { socket } = useSocket();
   useEffect(() => {
-    socket.on("message", onMessage);
+    socket!.on("message", onMessage);
 
     return () => {
-      socket.off("message", onMessage);
+      socket!.off("message", onMessage);
     };
   }, [onMessage]);
 }

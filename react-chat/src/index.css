@@ -11,6 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: hidden;
 }
 
 /**/
@@ -23,6 +24,23 @@
   background-color: #535bf2;
   border-radius: 10px;
   overflow-y: scroll;
+}
+.navigation {
+  width: 20vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.mainPage {
+  display: flex;
+  flex-direction: row;
+}
+
+.chat {
+  width: 75vw;
 }
 
 /**/
@@ -72,7 +90,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
+    color: #ffffff;
     background-color: #ffffff;
   }
   a:hover {

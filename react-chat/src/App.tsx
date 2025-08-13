@@ -1,38 +1,28 @@
-import { useEffect, useRef, useState } from "react";
-import CustomInput from "./components/Input";
-import { socket } from "./socket";
-import useMessages from "./hooks/socketHook";
-import type { MessageDTO } from "./models/models";
-import Message from "./components/Message";
+// import { useEffect, useRef, useState } from "react";
+// import CustomInput from "./components/Input";
+// import { socket } from "./socket";
+// import useMessages from "./hooks/useMessage";
+// import type { MessageDTO } from "./models/models";
+// import Message from "./components/Message";
+
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { SocketProvider } from "./context/socketContext";
+import Home from "./pages/Home";
+import Layout from "./pages/Layout";
+import Chat from "./components/Chat";
 
 function App() {
-  const [messages, setMessages] = useState<MessageDTO[]>([]);
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const container: any = containerRef.current;
-    if (container) {
-      container.scrollTop = container.scrollHeight; // scroll to bottom
-    }
-  }, [messages]);
-
-  useMessages((msg: MessageDTO) => {
-    console.log("mesageGot");
-    setMessages((prev) => [...prev, msg]);
-  });
-
-  const myId = socket.id;
-
   return (
-    <>
-      <div className="container" ref={containerRef}>
-        {messages.map((m, i) => (
-          <Message key={i} message={m} isMy={myId === m.senderId} />
-        ))}
-      </div>
-
-      <CustomInput />
-    </>
+    <BrowserRouter>
+      <SocketProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/general" element={<Layout />}>
+            <Route index element={<Chat />} />
+          </Route>
+        </Routes>
+      </SocketProvider>
+    </BrowserRouter>
   );
 }
 
