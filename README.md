@@ -7,6 +7,11 @@ io.on("connection", (socket) => {
   socket.on("messages", (message) => {
     console.log("message from " + socket.id + ": " + message);
   });
+
+  socket.on("joinRoom", (room) => {
+    socket.join(room);
+    console.log("User " + socket.id + ": joined room " + room);
+  });
 });
 ```
 
@@ -28,6 +33,6 @@ npm run dev
 
 cd server
 npm install
-node index.js
+node .
 
 ```

@@ -21,7 +21,7 @@ const Home: React.FC = () => {
     // listen for username from server
     const onUsername = (username: string) => {
       console.log("Received username:", username);
-      navigate("/general");
+      navigate("/general?type=channel");
     };
 
     socket.on("username", onUsername);

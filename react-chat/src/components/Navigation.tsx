@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSocket } from "../context/socketContext";
+import { Link, useParams } from "react-router-dom";
 
 interface ChatDTO {
   channels: string[];
@@ -27,18 +28,32 @@ const Navigation: React.FC = () => {
     };
   }, [socket]);
 
+  const { chat } = useParams<{ chat: string }>();
+
   return (
     <div className="navigation">
       <h2>Channels</h2>
       {chats.channels.map((ch) => (
-        <a key={ch}>{ch}</a>
+        <Link
+          style={chat === ch ? { color: "red" } : {}}
+          key={ch}
+          to={`/${ch}?type=channel`}
+        >
+          {ch}
+        </Link>
       ))}
 
       <br />
 
       <h2>Users</h2>
       {chats.userDms.map((ch) => (
-        <a key={ch}>{ch}</a>
+        <Link
+          style={chat === ch ? { color: "red" } : {}}
+          key={ch}
+          to={`/${ch}?type=dm`}
+        >
+          {ch}
+        </Link>
       ))}
     </div>
   );

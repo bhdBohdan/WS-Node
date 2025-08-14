@@ -9,7 +9,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { SocketProvider } from "./context/socketContext";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
-import Chat from "./components/Chat";
+import Chat from "./pages/Chat";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <SocketProvider>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/general" element={<Layout />}>
+          <Route path="/:chat" element={<Layout />}>
             <Route index element={<Chat />} />
           </Route>
         </Routes>
