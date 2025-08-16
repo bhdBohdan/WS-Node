@@ -5,7 +5,7 @@
   margin: 20px;
   height: 20vh;
   border-radius: 10px;
-  background-color: #535bf2;
+  background-color: #4c4c4c;
 }
 
 input {
@@ -37,11 +37,11 @@ input {
   line-height: 78px;
   font-size: 20px;
   font-family: "Bebas Neue", sans-serif;
-  background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+  background: linear-gradient(45deg, transparent 5%, #bdbdbd 5%);
   border: 0;
   color: #fff;
   letter-spacing: 3px;
-  box-shadow: 6px 0px 0px #00e6f6;
+  box-shadow: 6px 0px 0px #444444;
   outline: transparent;
   position: relative;
   user-select: none;
@@ -69,7 +69,7 @@ input {
     transparent 3%,
     #00e6f6 3%,
     #00e6f6 5%,
-    #ff013c 5%
+    #ffffff 5%
   );
   text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
   clip-path: var(--slice-0);

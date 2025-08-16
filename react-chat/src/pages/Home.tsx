@@ -32,9 +32,12 @@ const Home: React.FC = () => {
   }, [socket, navigate]);
 
   return (
-    <div className="homeForm">
+    <div className="homeForm" style={{ margin: "10vh" }}>
       <label> Enter your Name </label>
       <input
+        style={{
+          margin: "20px",
+        }}
         onChange={(e) => setInputValue(e.target.value)}
         value={inputValue}
       />
